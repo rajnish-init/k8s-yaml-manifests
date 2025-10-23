@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: asia-south1-docker.pkg.dev/clear-nebula-475114-v7/hello-world-repo/hello-world:673ffc0
+        ports:
+        - containerPort: 8080
