@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   # This is the name of the Argo CD application itself
-  name: helloworld-app
+  name: hello-world-app
   # This app manifest must be created in the 'argocd' namespace
   namespace: argocd
 spec:
@@ -10,15 +10,15 @@ spec:
 
   # 1. WHAT to deploy (your repo)
   source:
-    repoURL: https://github.com/rajnish-init/helloworld.git  # <-- UPDATE THIS
+    repoURL: https://github.com/rajnish-init/k8s-yaml-manifests.git  # <-- UPDATE THIS
     targetRevision: HEAD  # Or 'main', 'master', etc.
-    path: appConfig             # <-- The folder in your repo with the manifests
+    path: dev/hello-world        # <-- The folder in your repo with the manifests
 
   # 2. WHERE to deploy it (your cluster)
   destination:
     server: https://kubernetes.default.svc
     # The namespace where you want your app to live
-    namespace: helloworld
+    namespace: hello-world
 
   # 3. HOW to deploy it (optional, but recommended)
   syncPolicy:
@@ -26,4 +26,4 @@ spec:
       prune: true    # Delete old resources that are not in Git
       selfHeal: true # Re-sync if the live cluster state changes
     syncOptions:
-    - CreateNamespace=true # Automatically create the 'helloworld' namespace
+    - CreateNamespace=true # Automatically create the 'hello-world' namespace
