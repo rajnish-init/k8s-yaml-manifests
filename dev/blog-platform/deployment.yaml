@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: blog-platform
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: blog-platform
