@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: blog-platform
-        image: asia-south1-docker.pkg.dev/clear-nebula-475114-v7/docker-repository/blog-platform:9bcc11b
+        image: asia-south1-docker.pkg.dev/clear-nebula-475114-v7/docker-repository/blog-platform:2d866b8
         ports:
         - containerPort: 5000
