@@ -13,6 +13,9 @@ spec:
     repoURL: https://github.com/rajnish-init/k8s-yaml-manifests.git  # <-- UPDATE THIS
     targetRevision: HEAD  # Or 'main', 'master', etc.
     path: dev/blog-platform             # <-- The folder in your repo with the manifests
+    helm: 
+      valueFiles:
+        - values.yaml
 
   # 2. WHERE to deploy it (your cluster)
   destination:
