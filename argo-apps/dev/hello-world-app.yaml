@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD  # Or 'main', 'master', etc.
     path: dev/hello-world    # <-- The folder in your repo with the manifests
     helm:
-      valuesFiles: 
+      valueFiles: 
         - values-dev.yaml
 
   # 2. WHERE to deploy it (your cluster)
