@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   # This is the name of the Argo CD application itself
-  name: blog-platform-app
+  name: blog-platform-app-prod
   # This app manifest must be created in the 'argocd' namespace
   namespace: argocd
 spec:
