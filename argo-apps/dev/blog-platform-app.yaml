@@ -15,7 +15,7 @@ spec:
     path: dev/blog-platform             # <-- The folder in your repo with the manifests
     helm: 
       valueFiles:
-        - values.yaml
+        - values-dev.yaml
 
   # 2. WHERE to deploy it (your cluster)
   destination:
