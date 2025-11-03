@@ -21,7 +21,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     # The namespace where you want your app to live
-    namespace: hello-world
+    namespace: hello-world-dev
 
   # 3. HOW to deploy it (optional, but recommended)
   syncPolicy:
@@ -29,4 +29,4 @@ spec:
       prune: true    # Delete old resources that are not in Git
       selfHeal: true # Re-sync if the live cluster state changes
     syncOptions:
-    - CreateNamespace=true # Automatically create the 'hello-world' namespace
+    - CreateNamespace=true # Automatically create the 'hello-world-dev' namespace
