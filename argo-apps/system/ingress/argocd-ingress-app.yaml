@@ -1,34 +1,21 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: argocd-server-ingress
-  namespace: argocd
-  annotations:
-    # These are specific to NGINX
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+  # This is the 'Application' for the ingress
+  name: argocd-ingress
+  namespace: argocd # This manifest itself lives in the 'argocd' namespace
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
-  ingressClassName: nginx # <-- Tell NGINX to handle this
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              # NGINX will connect to the service's HTTPS port
-              name: https
-  
-  # This section handles the gRPC for Argo CD's CLI
-  - host: grpc.argocd.example.com # This doesn't need DNS, it's just a placeholder
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              name: https
+  project: default
+  source:
+    repoURL: https://github.com/rajnish-init/k8s-yaml-manifests.git
+    targetRevision: HEAD
+    path: system/argocd # <-- Tells Argo to watch this new path
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd # <-- Tells Argo to deploy the ingress INTO the 'argocd' namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
