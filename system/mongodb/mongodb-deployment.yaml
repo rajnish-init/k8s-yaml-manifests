@@ -1,0 +1,44 @@
+apiVersion: mongodbcommunity.mongodb.com/v1
+kind: MongoDBCommunity
+metadata:
+  name: my-mongo-db
+  namespace: mongodb
+spec:
+  members: 3
+  type: ReplicaSet
+  version: "7.0.0"
+
+  replicaSetHorizons:
+    - horizon: 34.180.29.48:27017
+    - horizon: 34.180.44.26:27017
+
+  security:
+    authentication:
+      modes: ["SCRAM"]
+  
+  users:
+    - name: my-admin-user
+      db: admin
+      passwordSecretRef:
+        name: my-mongo-admin-secret
+        key: password
+      roles:
+        - name: clusterAdmin
+          db: admin
+        - name: userAdminAnyDatabase
+          db: admin
+        - name: readWriteAnyDatabase
+          db: admin
+      scramCredentialsSecretName: my-scram
+
+  statefulSet:
+    spec:
+      volumeClaimTemplates:
+        - metadata:
+            name: data-volume
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: "standard-rwo"
+            resources:
+              requests:
+                storage: 10Gi
