@@ -4,7 +4,7 @@
 
 replicaCount: 1
 image:
-  repository: asia-south1-docker.pkg.dev/clear-nebula-475114-v7/docker-repository/hello-world
+  repository: asia-south1-docker.pkg.dev/test-project-476717/docker-repository/hello-world
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "8bb7b82"
