@@ -7,7 +7,7 @@ image:
   repository: asia-south1-docker.pkg.dev/clear-nebula-475114-v7/docker-repository/hello-world
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "5953ae6"
+  tag: "8bb7b82"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
