@@ -15,7 +15,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd # <-- Tells Argo to deploy the ingress INTO the 'argocd' namespace
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: false
+  # syncPolicy:
+  #   # automated:
+  #   #   prune: true
+  #   #   selfHeal: true
