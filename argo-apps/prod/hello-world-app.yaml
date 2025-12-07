@@ -27,6 +27,6 @@ spec:
   syncPolicy:
     automated: # Automatically sync when the Git repo changes
       prune: true    # Delete old resources that are not in Git
-      selfHeal: true # Re-sync if the live cluster state changes
+      selfHeal: false # Re-sync if the live cluster state changes
     syncOptions:
     - CreateNamespace=true # Automatically create the 'hello-world' namespace
